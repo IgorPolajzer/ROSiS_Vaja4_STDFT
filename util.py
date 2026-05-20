@@ -9,9 +9,9 @@ def read_signal_from_mp3(input_file):
     return samples, sound.frame_rate
 
 
-def plot_spectogram(fr, ti, sp):
-    plt.pcolormesh(ti, fr, np.log10(sp) , shading='auto')
-    plt.title('Spektrogram')
+def plot_spectogram(fr, ti, sp, file, interval, overlap, hamming):
+    plt.pcolormesh(ti, fr, sp , shading='auto')
+    plt.title(f'Spektrogram[{file}] - Interval:{interval}, Overlap: {overlap}, Hamming: {hamming}')
     plt.xlabel('Čas [s]')
     plt.ylabel('Frekvenca [Hz]')
     plt.colorbar(label='Amplituda')
