@@ -1,13 +1,7 @@
-from matplotlib import pyplot as plt
-
 from stdft import stdft
+from util import plot_spectogram
 
 if __name__ == '__main__':
-    windows, Fs, nfft = stdft("recordings/a_high_pitch.mp3", 1, 0.2, 44105)
+    fr, ti, sp = stdft("recordings/a_high_pitch.mp3", 1, 0, 44105)
+    plot_spectogram(fr, ti, sp)
 
-    plt.pcolormesh(ti, fr, np.abs(sp), shading='auto') # gouraud
-    plt.title('Spektrogram')
-    plt.xlabel('Čas [s]')
-    plt.ylabel('Frekvenca [Hz]')
-    plt.colorbar(label='Amplituda')
-    plt.show()
