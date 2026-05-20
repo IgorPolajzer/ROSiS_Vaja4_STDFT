@@ -1,16 +1,13 @@
-# This is a sample Python script.
+from matplotlib import pyplot as plt
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from stdft import stdft
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    windows, Fs, nfft = stdft("recordings/a_high_pitch.mp3", 1, 0.2, 44105)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    plt.pcolormesh(ti, fr, np.abs(sp), shading='auto') # gouraud
+    plt.title('Spektrogram')
+    plt.xlabel('Čas [s]')
+    plt.ylabel('Frekvenca [Hz]')
+    plt.colorbar(label='Amplituda')
+    plt.show()
